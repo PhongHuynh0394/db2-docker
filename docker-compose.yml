@@ -1,0 +1,34 @@
+# docker exec -it db2 bash -c 'su - db2inst1'
+services:
+  db2:
+    container_name: db2
+    image: ibmcom/db2
+    privileged: true
+    ports:
+      - 50000:50000
+    env_file:
+      - .env
+    volumes:
+      - ./db2_database:/database
+    networks:
+      - db2_net
+
+  # db2-ui:
+  #   container_name: db2-ui
+  #   image: icr.io/cpopen/db2console/db2console
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 11081:8843
+  #   volumes:
+  #     - ./dmc:/mnt
+  #     - /etc/localtime:/etc/localtime:ro
+  #   networks:
+  #     - db2_net
+     
+networks:
+  db2_net:
+    name: db2_net
+    driver: bridge
+
+
