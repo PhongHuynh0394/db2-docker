@@ -24,3 +24,10 @@ ETCD_PASSWORD=
 To run: `docker compose up -d`
 
 To check log: `docker logs db2`
+
+To using db2 commandline processor (CLP):
+```bash
+docker exec -it db2 bash
+su - db2inst1 # base on your db2 instance config in .env
+db2
+```
